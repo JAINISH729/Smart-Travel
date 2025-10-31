@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Smart Travel Planner</title>
+</head>
+
+<body>
+    <h1>Smart Travel Planner</h1>
+
+    <script>
+        // destinations
+        let places = [];
+        for (let i = 0; i < 3; i++) {
+            let place = prompt("Enter destination " + (i + 1) + ":");
+            places.push(place);
+        }
+
+        // budget
+        let budget = parseInt(prompt("Enter your total budget (₹):"));
+        let tripMessage = "";
+        if (budget < 10000){
+            tripMessage = "Plan a short domestic trip.";
+        }
+        else if (budget <= 50000){
+            tripMessage = "You can plan a long domestic trip.";
+        }
+        else{
+            tripMessage = "International trip possible!";
+        }
+
+        // number of days
+        let days = parseInt(prompt("Enter number of travel days:"));
+        let dayMessage = "";
+        if (days < 3){
+            dayMessage = "Weekend Getaway.";
+        }
+        else if (days <= 7){
+            dayMessage = "Perfect Holiday Trip.";
+        }
+        else{
+            dayMessage = "Extended Vacation.";
+        }
+
+        
+        function hotelSuggestion(budget, days) {
+            let perDay = budget / days;
+            if (perDay < 2000) return "Budget Hotels.";
+            else if (perDay <= 5000) return "Mid-range Hotels.";
+            else return "Luxury Hotels.";
+        }
+        let hotel = hotelSuggestion(budget, days);
+
+        //  Output
+        document.write("<h3>Travel Summary</h3>");
+        document.write("Destinations: " + places.join(", ") + "<br>");
+        document.write("Total Budget: ₹" + budget + "<br>");
+        document.write("Days Planned: " + days + "<br>");
+        document.write("Trip Type: " + dayMessage + "<br>");
+        document.write("Hotel Suggestion: " + hotel + "<br>");
+        document.write("Travel Advice: " + tripMessage + "<br>");
+        alert("Smart Travel Plan Ready!");
+    </script>
+
+</body>
+
+</html>
